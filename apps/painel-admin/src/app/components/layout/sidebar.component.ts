@@ -46,6 +46,12 @@ import { RouterModule } from '@angular/router';
             <span>Entregas</span>
           </a>
         </li>
+        <li>
+          <a routerLink="/alertas" routerLinkActive="active">
+            <span class="icon">🔔</span>
+            <span>Alertas</span>
+          </a>
+        </li>
       </ul>
 
       <div class="sidebar-footer">

@@ -81,7 +81,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "apps/painel-admin/jest.config.ts"
+        "jestConfig": "apps/painel-admin/jest.config.js"
       }
     },
     "serve-static": {
