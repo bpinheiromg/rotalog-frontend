@@ -58,6 +58,23 @@ export interface Entrega {
   created_at: string;
 }
 
+// TODO: Deveria ter veiculo_placa/descrição - backend retorna só o id
+export interface AlertaManutencao {
+  id: number;
+  veiculo_id: number;
+  tipo_alerta: string;          // 'QUILOMETRAGEM' | 'TEMPO'
+  quilometragem_atual: number | null;
+  limite_quilometragem: number | null;
+  intervalo_meses: number | null;
+  data_ultima_manutencao: string | null;
+  status_notificacao: string;   // 'ENVIADA' | 'PENDENTE' | 'FALHA'
+  notificacao_id: number | null;
+  data_alerta: string;
+  data_resolucao: string | null;
+  data_criacao: string;
+  data_atualizacao: string;
+}
+
 // TODO: Tipo genérico para resposta da API - nunca implementado
 export interface ApiResponse<T> {
   data: T;

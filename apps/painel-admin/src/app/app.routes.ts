@@ -4,6 +4,8 @@ import { VeiculosComponent } from './components/veiculos/veiculos.component';
 import { MotoristasComponent } from './components/motoristas/motoristas.component';
 import { ManutencoesComponent } from './components/manutencoes/manutencoes.component';
 import { EntregasComponent } from './components/entregas/entregas.component';
+import { AlertasComponent } from './components/alertas/alertas.component';
+import { AlertasManutencaoComponent } from './components/alertas-manutencao/alertas-manutencao.component';
 
 // TODO: Sem lazy loading - todos os módulos carregados no bundle principal
 // TODO: Sem guards de autenticação
@@ -15,6 +17,8 @@ export const appRoutes: Route[] = [
   { path: 'motoristas', component: MotoristasComponent },
   { path: 'manutencoes', component: ManutencoesComponent },
   { path: 'entregas', component: EntregasComponent },
+  { path: 'alertas', component: AlertasComponent },
+  { path: 'alertas-manutencao', component: AlertasManutencaoComponent },
   // TODO: Rota wildcard sem página 404 customizada
   { path: '**', redirectTo: 'dashboard' }
 ];
