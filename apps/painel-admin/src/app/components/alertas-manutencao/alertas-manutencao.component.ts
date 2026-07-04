@@ -13,6 +13,9 @@ import { AlertaManutencao } from '../../models';
       <header class="page-header">
         <h1>Alertas de Manutenção</h1>
         <p class="subtitle">Visualize e filtre alertas de manutenção preventiva dos veículos</p>
+        <button class="btn-primary" (click)="verificarElegiveis()" [disabled]="loading()">
+          Verificar Elegíveis
+        </button>
       </header>
 
       <section class="filter-section">
@@ -96,6 +99,11 @@ import { AlertaManutencao } from '../../models';
 
     .page-header {
       margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .page-header h1 {
@@ -108,6 +116,27 @@ import { AlertaManutencao } from '../../models';
       margin: 0;
       color: #666;
       font-size: 15px;
+    }
+
+    .btn-primary {
+      background: #1565c0;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #0d47a1;
+    }
+
+    .btn-primary:disabled {
+      background: #9e9e9e;
+      cursor: not-allowed;
     }
 
     .filter-section {
@@ -253,6 +282,17 @@ export class AlertasManutencaoComponent implements OnInit {
     } catch (error) {
       console.error('Erro ao carregar alertas:', error);
       this.alertas.set([]);
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async verificarElegiveis() {
+    this.loading.set(true);
+    try {
+      await this.alertasService.verificarElegiveis();
+      this.alertasService.limparCache();
+      await this.loadAlertas();
     } finally {
       this.loading.set(false);
     }
